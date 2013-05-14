@@ -18,6 +18,7 @@
 "use strict";
 
 (function (jQuery) {
+  var  maxTagIndex = 0;
   if (typeof console === "undefined" || typeof console.log === "undefined") {
     console = {};
     console.log = function () { };
@@ -302,10 +303,9 @@
            .animate({ backgroundColor: tagManagerOptions.blinkBGColor_1 }, 100)
            .animate({ backgroundColor: tagManagerOptions.blinkBGColor_2 }, 100);
       } else {
-        var max = Math.max.apply(null, tlid);
-        max = max == -Infinity ? 0 : max;
-
-        var tagId = ++max;
+        var max = maxTagIndex;
+        maxTagIndex += 1;
+        var tagId = max;
         tlis.push(tag);
         tlid.push(tagId);
 
